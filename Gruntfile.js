@@ -22,6 +22,13 @@ module.exports = function(grunt) {
             },
         },
 
+        browserify2: {
+            all: {
+                entry: './global',
+                compile: './build/dominate.js'
+            }
+        },
+
         // uglify: {
         //     options: {
         //         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -37,8 +44,10 @@ module.exports = function(grunt) {
     // grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-amd-wrap');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-browserify2');
 
     // Default task(s).
     grunt.registerTask('default', ['amdwrap', 'watch']);
+    grunt.registerTask('build', ['browserify2']);
 
 };
