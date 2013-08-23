@@ -11,8 +11,18 @@ var Node = module.exports = boop.extend({
 
     setAttribute: function(name, value) {
         this._[name] = value;
-        //а еще тут где-то надо синхронизировать изменения на реальный DOM, если он есть.
-        //но чтобы можно было переопределять это, надо сделать чтото типа типа applyAttribute
+        this.applyAttribute(name, value);
+    },
+
+    applyAttribute: function(name, value) {
+        var applier = 'applyAttribute_' + name;
+        if ('function' === typeof this[applier]) {
+            this[applier].call(this, value);
+            return;
+        }
+        if(this.el) {
+            this.el.setAttribute(name, value);
+        }
     },
 
     getAttribute: function(name) {
@@ -53,7 +63,7 @@ var Node = module.exports = boop.extend({
         res.push(esc(this.tagname));
         res.push(' ');
         res.push(stringifyAttrs(this._));
-        if(this.selfClosing) {
+        if (this.selfClosing) {
             res.push(' />');
             return res.join('');
         }
@@ -68,19 +78,19 @@ var Node = module.exports = boop.extend({
         return res.join('');
     },
 
-    domify: function () {
-        if(this.el) {
+    domify: function() {
+        if (this.el) {
             return this.el;
         }
 
         var el = document.createElement(this.tagname);
 
-        Object.keys(this._).forEach(function (key) {
+        Object.keys(this._).forEach(function(key) {
             var val = this._[key];
             el.setAttribute(key, val);
         }.bind(this));
 
-        this.children.forEach(function (child) {
+        this.children.forEach(function(child) {
             el.appendChild(child.domify());
         });
 
@@ -89,11 +99,11 @@ var Node = module.exports = boop.extend({
         return el;
     },
 
-    toJSON : function () {
+    toJSON: function() {
         var js = {};
         js.T = this.tagname;
         js.A = this._;
-        js.C = this.children.map(function (child) {
+        js.C = this.children.map(function(child) {
             return child.toJSON();
         });
         return js;
