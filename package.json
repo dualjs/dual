@@ -11,5 +11,10 @@
   "license": "BSD",
   "dependencies": {
     "boop": "0.0.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-amd-wrap": "~1.0.1",
+    "grunt-contrib-watch": "~0.5.2"
   }
 }
