@@ -4,17 +4,20 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         amdwrap: {
-            usingDynamicExpansion: {
+            all: {
                 expand: true,
                 cwd: "./",
-                src: ["*.js", "Node/*.js"],
-                dest: "test/amd/"
+                src: ["dominate.js",
+                    "lib/**.js",
+                    "lib/Node/**.js"
+                ],
+                dest: "amd/"
             }
         },
 
         watch: {
             all: {
-                files: ["*.js", "Node/*.js", "test/*.js"],
+                files: ["./lib/**.js", "test/*.js"],
                 tasks: ['amdwrap', 'browserify2:test'],
                 options: {
                     spawn: false

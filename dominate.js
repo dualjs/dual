@@ -1,7 +1,7 @@
 module.exports = {
-    Node: require('./Node'),
-    fromJSON : require('./fromJSON'),
+    Node: require('./lib/Node'),
+    fromJSON : require('./lib/fromJSON'),
     node: {
-        Img : require('./Node/Img'),
+        Img : require('./lib/Node/Img'),
     }
 };

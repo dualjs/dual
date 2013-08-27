@@ -1,6 +1,6 @@
 /* global describe, expect, it*/
 
-var Node = require('../Node');
+var Node = require('../lib/Node');
 
 describe('Node', function() {
     var n = new Node();
