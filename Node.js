@@ -33,10 +33,11 @@ var Node = module.exports = boop.extend({
         //а еще тут где-то надо синхронизировать изменения на реальный DOM, если он есть.
         throwIfSelfClosing(this);
         this.children.push(node);
+
+        if(this.el) {
+            this.el.appendChild(node.domify());
+        }
     },
-    //а еще тут надо removeChild и removeAt
-    //и деструктор!
-    //АААААА!!!!!!!!
 
     prependChild: function(node) {
         throwIfSelfClosing(this);
@@ -61,7 +62,6 @@ var Node = module.exports = boop.extend({
         var res = [];
         res.push('<');
         res.push(esc(this.tagname));
-        res.push(' ');
         res.push(stringifyAttrs(this._));
         if (this.selfClosing) {
             res.push(' />');
@@ -120,10 +120,14 @@ function esc(unsafe_str) {
 }
 
 function stringifyAttrs(attrs) {
-    return Object.keys(attrs).map(function(key) {
+    var attrs = Object.keys(attrs).map(function(key) {
         var val = attrs[key];
         return esc(key) + '=' + '"' + esc(val) + '"';
-    }).join(' ');
+    });
+    if(attrs.length) {
+        attrs.unshift('');
+    }
+    return attrs.join(' ');
 }
 
 function throwIfSelfClosing(node) {

@@ -16,6 +16,9 @@
     "grunt": "~0.4.1",
     "grunt-amd-wrap": "~1.0.1",
     "grunt-contrib-watch": "~0.5.2",
-    "grunt-browserify2": "~0.1.8"
+    "grunt-browserify2": "~0.1.8",
+    "chai": "~1.7.2",
+    "mocha": "~1.12.0",
+    "expect": "0.0.2"
   }
 }
