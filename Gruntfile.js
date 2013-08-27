@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 
         watch: {
             all: {
-                files: ["*.js", "Node/*.js", "test/*.test.js"],
+                files: ["*.js", "Node/*.js", "test/*.js"],
                 tasks: ['amdwrap', 'browserify2:test'],
                 options: {
                     spawn: false
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         browserify2: {
             test: {
                 entry: './test/index.test',
-                compile: './test/built.js',
+                compile: './build/test.js',
                 debug: true
             },
             build: {
