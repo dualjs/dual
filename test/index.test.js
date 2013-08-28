@@ -17,6 +17,14 @@ describe('Node/Default', function() {
 
 });
 
+describe('Node/Text', function() {
+    it('should be created with fromJSON()', function () {
+        var n = fromJSON('hello world');
+        n.stringify().should.equal('hello world');
+        n.domify().should.be.an.instanceof(window.Text);
+    });
+});
+
 describe('Node', function() {
     var n = new Node();
 
