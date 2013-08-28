@@ -1,6 +1,21 @@
 /* global describe, expect, it*/
 
 var Node = require('../lib/Node');
+var fromJSON = require('../lib/fromJSON');
+
+describe('Node/Default', function() {
+    it('should be created with fromJSON()', function () {
+        var n = fromJSON({
+            T : 'test',
+            A : {
+                'foo': 'bar'
+            },
+            C : []
+        });
+        n.stringify().should.equal('<test foo="bar"></test>');
+    });
+
+});
 
 describe('Node', function() {
     var n = new Node();
