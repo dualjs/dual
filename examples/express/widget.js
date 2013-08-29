@@ -18,11 +18,11 @@ var Widget = module.exports = dominate.Widget.extend({
     },
 
     applyAttribute_title: function(value) {
-        this.assets.titleCell.children[0].setContent(value);
+        this.assets.titleCell.setText(value);
     },
 
     applyAttribute_time: function(value) {
-        this.assets.timeCell.children[0].setContent(value);
+        this.assets.timeCell.setText(value);
     },
 
     setTitle: function(title) {

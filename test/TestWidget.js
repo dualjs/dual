@@ -15,10 +15,10 @@ module.exports = Widget.extend({
     },
 
     applyAttribute_left : function (value) {
-        this.assets.leftCell.children[0].setContent(value);
+        this.assets.leftCell.setText(value);
     },
 
     applyAttribute_right : function (value) {
-        this.assets.rightCell.children[0].setContent(value);
+        this.assets.rightCell.setText(value);
     }
 });

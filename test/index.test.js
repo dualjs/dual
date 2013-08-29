@@ -144,6 +144,16 @@ describe('Node', function() {
         n.clear();
         n.stringify().should.equal('<div></div>');
     });
+
+
+    it('should allow setText', function() {
+        var n = fromJSON(['div', [
+            ['div'],
+            ['div']
+        ]]);
+        n.setText('hello world');
+        n.stringify().should.equal('<div>hello world</div>');
+    });
 });
 
 describe('utils/index*', function() {
