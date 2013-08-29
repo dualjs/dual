@@ -136,6 +136,19 @@ describe('Node', function() {
         n2.domify().outerHTML.should.equal('<div><div></div></div>');
     });
 
+
+    it('should be cleared', function() {
+        var n = fromJSON({
+            T: 'div',
+            C: [{
+                T: 'div',
+            }, {
+                T: 'div',
+            }]
+        });
+        n.clear();
+        n.stringify().should.equal('<div></div>');
+    });
 });
 
 describe('utils/index*', function() {
