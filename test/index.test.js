@@ -118,6 +118,23 @@ describe('Node', function() {
         n.domify().outerHTML.should.equal('<div></div>');
     });
 
+    it('should be able to move node correctly from one parent to another', function() {
+        var n1 = new Node();
+        var n2 = new Node();
+        var c = new Node();
+
+        n1.domify().outerHTML.should.equal('<div></div>');
+        n2.domify().outerHTML.should.equal('<div></div>');
+
+        n1.appendChild(c);
+        n1.domify().outerHTML.should.equal('<div><div></div></div>');
+        n2.domify().outerHTML.should.equal('<div></div>');
+
+        n2.appendChild(c);
+        n1.domify().outerHTML.should.equal('<div></div>');
+        n2.domify().outerHTML.should.equal('<div><div></div></div>');
+    });
+
 });
 
 describe('utils/index*', function() {
