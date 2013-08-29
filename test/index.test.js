@@ -3,6 +3,7 @@
 var Node = require('../lib/Node');
 var fromJSON = require('../lib/fromJSON');
 var utils = require('../lib/utils');
+var TestWidget = require('./TestWidget');
 
 describe('Node/Default', function() {
     it('should be created with fromJSON()', function() {
@@ -174,5 +175,55 @@ describe('utils/index*', function() {
         var idx = utils.indexByName(n, false);
         idx.should.have.property('one');
         idx.should.have.property('two');
+    });
+});
+
+describe('Widget', function() {
+    it('should be created', function() {
+        var w = new TestWidget();
+
+        w.domify().querySelectorAll('td').length.should.equal(2);
+
+        w.stringify().should.equal(['<div name="root">',
+            '<table><tr>',
+            '<td name="leftCell">hello</td>',
+            '<td name="rightCell">world</td>',
+            '</tr></table></div>'
+        ].join(''));
+
+        w.assets.root.should.be.an.instanceof(Node);
+        w.assets.leftCell.should.be.an.instanceof(Node);
+        w.assets.rightCell.should.be.an.instanceof(Node);
+        console.log(w);
+    });
+
+    it('should be appended to node', function() {
+        var n = new Node();
+        var w = new TestWidget();
+
+        n.appendChild(w);
+
+        w.parent.should.equal(n);
+
+        n.stringify().should.equal(['<div><div name="root">',
+            '<table><tr>',
+            '<td name="leftCell">hello</td>',
+            '<td name="rightCell">world</td>',
+            '</tr></table></div></div>'
+        ].join(''));
+    });
+
+    it('should apply its attributes', function() {
+        var w = new TestWidget();
+
+        w.setAttribute('left', 'foo');
+        w.setAttribute('right', 'bar');
+
+        w.stringify().should.equal(['<div name="root">',
+            '<table><tr>',
+            '<td name="leftCell">foo</td>',
+            '<td name="rightCell">bar</td>',
+            '</tr></table></div>'
+        ].join(''));
     });
 });
