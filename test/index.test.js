@@ -58,6 +58,37 @@ describe('Node', function() {
         n.stringify().should.equal('<div><div id="2"></div></div>');
     });
 
+    it('should allow insertBefore', function() {
+        var n = new Node();
+        var c1 = new Node();
+        var c2 = new Node();
+        var c3 = new Node();
+        c1.setAttribute('name', 'c1');
+        c2.setAttribute('name', 'c2');
+        c3.setAttribute('name', 'c3');
+        n.appendChild(c1);
+        n.appendChild(c3);
+
+        n.insertBefore(c2, c3);
+        n.stringify().should.equal('<div><div name="c1"></div><div name="c2"></div><div name="c3"></div></div>');
+    });
+
+    it('should reflect insertBefore on domified tree', function() {
+        var n = new Node();
+        n.domify();
+        var c1 = new Node();
+        var c2 = new Node();
+        var c3 = new Node();
+        c1.setAttribute('name', 'c1');
+        c2.setAttribute('name', 'c2');
+        c3.setAttribute('name', 'c3');
+        n.appendChild(c1);
+        n.appendChild(c3);
+
+        n.insertBefore(c2, c3);
+        n.domify().outerHTML.should.equal('<div><div name="c1"></div><div name="c2"></div><div name="c3"></div></div>');
+    });
+
     it('should allow reflect appendChild() on domified tree', function() {
         var n = new Node();
         var c = new Node();
