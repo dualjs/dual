@@ -7,13 +7,12 @@ var TestWidget = require('./TestWidget');
 
 describe('Node/Default', function() {
     it('should be created with fromJSON()', function() {
-        var n = fromJSON({
-            T: 'test',
-            A: {
-                'foo': 'bar'
+        var n = fromJSON([
+            'test', {
+                foo: 'bar'
             },
-            C: []
-        });
+            []
+        ]);
         n.stringify().should.equal('<test foo="bar"></test>');
     });
 
@@ -138,14 +137,10 @@ describe('Node', function() {
 
 
     it('should be cleared', function() {
-        var n = fromJSON({
-            T: 'div',
-            C: [{
-                T: 'div',
-            }, {
-                T: 'div',
-            }]
-        });
+        var n = fromJSON(['div', [
+            ['div'],
+            ['div']
+        ]]);
         n.clear();
         n.stringify().should.equal('<div></div>');
     });
@@ -153,18 +148,16 @@ describe('Node', function() {
 
 describe('utils/index*', function() {
     it('should index by custom function', function() {
-        var n = fromJSON({
-            T: 'div',
-            A: {
+        var n = fromJSON([
+            'div', {
                 name: 'one'
             },
-            C: [{
-                T: 'div',
-                A: {
+            [
+                ['div', {
                     name: 'two'
-                }
-            }]
-        });
+                }]
+            ]
+        ]);
         var idx = utils.index(n, false, function(ch) {
             return ch.getAttribute('name');
         });
@@ -173,18 +166,16 @@ describe('utils/index*', function() {
     });
 
     it('should index by name', function() {
-        var n = fromJSON({
-            T: 'div',
-            A: {
+        var n = fromJSON([
+            'div', {
                 name: 'one'
             },
-            C: [{
-                T: 'div',
-                A: {
+            [
+                ['div', {
                     name: 'two'
-                }
-            }]
-        });
+                }]
+            ]
+        ]);
         var idx = utils.indexByName(n, false);
         idx.should.have.property('one');
         idx.should.have.property('two');

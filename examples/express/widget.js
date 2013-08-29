@@ -3,43 +3,18 @@ var fromJSON = dominate.fromJSON;
 
 var Widget = module.exports = dominate.Widget.extend({
     initStructure: function() {
-        this.$ = fromJSON({
-            T: 'div',
-            A: {
-                name: 'root'
-            },
-            C: [{
-                T: 'table',
-                A: {
-                    border: '1'
-                },
-                C: [{
-                    T: 'tr',
-                    C: [{
-                        T: 'th',
-                        C: ['Title:']
-                    }, {
-                        T: 'td',
-                        A: {
-                            name: 'titleCell'
-                        },
-                        C: ['hello']
-                    }]
-                }, {
-                    T: 'tr',
-                    C: [{
-                        T: 'th',
-                        C: ['Time:']
-                    }, {
-                        T: 'td',
-                        A: {
-                            name: 'timeCell'
-                        },
-                        C: ['world']
-                    }]
-                }, ]
-            }]
-        });
+        this.$ = fromJSON(['div', {name:'root'}, [
+            ['table', { border:'1' }, [
+                ['tr', [
+                    ['th', ['Title:']],
+                    ['td', {name:'titleCell'}, ['hello']]
+                ]],
+                ['tr', [
+                    ['th', ['Time:']],
+                    ['td', {name:'timeCell'}, ['world']]
+                ]]
+            ]]
+        ]]);
     },
 
     applyAttribute_title: function(value) {

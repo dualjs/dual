@@ -4,31 +4,14 @@ var fromJSON = require('../lib/fromJSON');
 
 module.exports = Widget.extend({
     initStructure: function() {
-        this.$ = fromJSON({
-            T: 'div',
-            A: {
-                name: 'root'
-            },
-            C: [{
-                T: 'table',
-                C: [{
-                    T: 'tr',
-                    C: [{
-                        T: 'td',
-                        A: {
-                            name: 'leftCell'
-                        },
-                        C: ['hello']
-                    }, {
-                        T: 'td',
-                        A: {
-                            name: 'rightCell'
-                        },
-                        C: ['world']
-                    }]
-                }]
-            }]
-        });
+        this.$ = fromJSON(['div', {name:'root'}, [
+            ['table', [
+                ['tr', [
+                    ['td', {name:'leftCell'}, ['hello']],
+                    ['td', {name:'rightCell'}, ['world']]
+                ]]
+            ]]
+        ]]);
     },
 
     applyAttribute_left : function (value) {
