@@ -89,7 +89,7 @@ describe('Node', function() {
         n.domify().outerHTML.should.equal('<div><div name="c1"></div><div name="c2"></div><div name="c3"></div></div>');
     });
 
-    it('should allow reflect appendChild() on domified tree', function() {
+    it('should reflect appendChild() on domified tree', function() {
         var n = new Node();
         var c = new Node();
         var dom = n.domify();
@@ -99,6 +99,24 @@ describe('Node', function() {
         dom.outerHTML.should.equal('<div><div id="2"></div></div>');
     });
 
+    it('should allow removeChild()', function() {
+        var n = new Node();
+        var c = new Node();
+        n.appendChild(c);
+        n.stringify().should.equal('<div><div></div></div>');
+        n.removeChild(c);
+        n.stringify().should.equal('<div></div>');
+    });
+
+    it('should reflect removeChild() on domified tree', function() {
+        var n = new Node();
+        var c = new Node();
+        n.domify().outerHTML.should.equal('<div></div>');
+        n.appendChild(c);
+        n.domify().outerHTML.should.equal('<div><div></div></div>');
+        n.removeChild(c);
+        n.domify().outerHTML.should.equal('<div></div>');
+    });
 
 });
 
