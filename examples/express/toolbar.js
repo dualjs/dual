@@ -20,15 +20,5 @@ var Toolbar = module.exports = dominate.Widget.extend({
                 ]
             ]]
         ));
-        // this.assets.ul.appendChild(fromJSON([
-        //     'li', [
-        //         ['a', {
-        //                 href: item.href,
-        //                 title: item.title
-        //             },
-        //             ['' + item.text]
-        //         ]
-        //     ]
-        // ]));
     }
 });
