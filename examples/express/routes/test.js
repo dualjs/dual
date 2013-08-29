@@ -9,9 +9,19 @@ exports.test = [
 	function(req, res, next) {
 		req.widget.setTitle('hello');
 		req.widget.setTime('world');
+
+		req.toolbar.addItem({
+			text: 'Home',
+			href: '/'
+		});
 		next();
 	},
 	function(req, res) {
-		res.send(req.widget.stringify());
+		var layout = dominate.fromJSON(['div']);
+		layout.appendChild(req.toolbar);
+		layout.appendChild(req.widget);
+
+
+		res.send(layout.stringify());
 	}
 ];
