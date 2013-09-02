@@ -154,6 +154,19 @@ describe('Node', function() {
         n.setText('hello world');
         n.stringify().should.equal('<div>hello world</div>');
     });
+
+    it('should stringify different types of attrs', function () {
+        var n = new Node();
+        n.setAttribute('boolAttr1', true);
+        n.setAttribute('boolAttr2', false);
+        n.setAttribute('strAttr', 'abc');
+        n.setAttribute('numAttr', 700);
+        n.setAttribute('nullAttr', null);
+        n.setAttribute('undefAttr', undefined);
+        n.stringify().should.equal('<div boolAttr1="boolAttr1" strAttr="abc" numAttr="700"></div>');
+    });
+
+
 });
 
 describe('utils/index*', function() {
