@@ -164,6 +164,8 @@ describe('Node', function() {
         n.setAttribute('nullAttr', null);
         n.setAttribute('undefAttr', undefined);
         n.stringify().should.equal('<div boolAttr1="boolAttr1" strAttr="abc" numAttr="700"></div>');
+        n.domify().outerHTML.should.equal('<div boolattr1="boolAttr1" strattr="abc" numattr="700"></div>');
+        // console.log(n.domify());
     });
 
 
