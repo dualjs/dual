@@ -4,6 +4,7 @@ var Node = require('../lib/Node');
 var fromJSON = require('../lib/fromJSON');
 var utils = require('../lib/utils');
 var TestWidget = require('./TestWidget');
+var List = require('../lib/List');
 
 describe('Node/Default', function() {
     it('should be created with fromJSON()', function() {
@@ -155,7 +156,7 @@ describe('Node', function() {
         n.stringify().should.equal('<div>hello world</div>');
     });
 
-    it('should stringify different types of attrs', function () {
+    it('should stringify different types of attrs', function() {
         var n = new Node();
         n.setAttribute('boolAttr1', true);
         n.setAttribute('boolAttr2', false);
@@ -254,5 +255,36 @@ describe('Widget', function() {
             '<td name="rightCell">bar</td>',
             '</tr></table></div>'
         ].join(''));
+    });
+});
+
+describe('List', function() {
+    it('should allow add item', function() {
+        var l = new List();
+        l.add('hello');
+        l.stringify().should.equal('<ul name="root"><li>hello</li></ul>');
+    });
+
+    it('should allow remove item', function() {
+        var l = new List();
+        l.add('hello');
+        l.remove(0);
+        l.stringify().should.equal('<ul name="root"></ul>');
+    });
+
+    it('should allow add item at specified position', function() {
+        var l = new List();
+        l.add('hello');
+        l.add('world');
+        l.stringify().should.equal('<ul name="root">' +
+            '<li>hello</li>' +
+            '<li>world</li>' +
+            '</ul>');
+        l.add('crazy', 1);
+        l.stringify().should.equal('<ul name="root">' +
+            '<li>hello</li>' +
+            '<li>crazy</li>' +
+            '<li>world</li>' +
+            '</ul>');
     });
 });
