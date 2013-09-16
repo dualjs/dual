@@ -1,54 +1,36 @@
-var dominate = require('../../dominate');
-var fromJSON = dominate.fromJSON;
+var ContactList = require('./ContactList');
+var ContactForm = require('./ContactForm');
 
 
-var ContactItem = dominate.Widget.extend({
-    initStructure: function() {
-        this.$ = fromJSON(['li', [
-            ['p', [
-                ['b', ['First Name: ']],
-                ['span', {name:'first'}]
-            ]],
-            ['p', [
-                ['b', ['Last Name: ']],
-                ['span', {name:'last'}]
-            ]]
-        ]]);
-    },
-
-    applyAttribute_first : function (value) {
-        this.assets.first.setText(value);
-    },
-
-    applyAttribute_last : function (value) {
-        this.assets.last.setText(value);
-    }
-
-});
-
-var ContactsList = dominate.List.extend({
-
-    initStructure: function() {
-        dominate.List.prototype.initStructure.call(this);
-        this.$.setAttribute('class', 'contact-list');
-    },
-
-    setupItem: function(data) {
-        return new ContactItem();
-    }
-});
-
-var list = new ContactsList();
+var list = new ContactList();
+var form = new ContactForm();
 
 document.getElementById('app')
     .appendChild(list.domify());
 
+document.getElementById('app')
+    .appendChild(form.domify());
+
+form.populate({
+    first: 'a',
+    last: 'b',
+    email: 'a.b@example.com'
+});
+
 list.add({
     first: 'Hello',
-    last: 'World'
+    last: 'World',
+    email: 'hello.world@example.com'
 });
 
 list.add({
     first: 'Foo',
-    last: 'Bar'
+    last: 'Bar',
+    email: 'foo.bar@example.com'
 });
+
+list.add({
+    first: 'Abc',
+    last: 'Xyz',
+    email: 'abc.xyz@example.com'
+}, 1);
