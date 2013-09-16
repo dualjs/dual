@@ -2,3 +2,4 @@ node_modules
 amd
 build
 examples/express/node_modules
+examples/list/build

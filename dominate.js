@@ -1,6 +1,7 @@
 module.exports = {
     Node: require('./lib/Node'),
     Widget: require('./lib/Widget'),
+    List: require('./lib/List'),
     fromJSON : require('./lib/fromJSON'),
     utils: require('./lib/utils'),
     factory: require('./lib/defaultFactory'),

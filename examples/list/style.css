@@ -1,0 +1,26 @@
+body {
+	font-family: Sans, Arial;
+}
+p {
+	padding:0;
+	margin:0;
+}
+ul.contact-list {
+	display: block;
+	text-indent: 0;
+	margin: 0;
+	padding: 0;
+	width:200px;
+}
+.contact-list li {
+	list-style: none;
+	display: block;
+	text-indent: 0;
+	margin: 1px 0;
+	padding: 0;
+	background-color: #ddd;
+	outline: 1px solid #888;
+}
+.contact-list li:hover {
+	background-color: #aaa;
+}

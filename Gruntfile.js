@@ -17,12 +17,16 @@ module.exports = function(grunt) {
 
         watch: {
             all: {
-                files: ["./lib/**.js", "test/*.js"],
-                tasks: ['amdwrap', 'browserify2:test'],
+                files: ["./lib/**.js", "test/*.js", "examples/list/**.js"],
+                tasks: [
+                    'amdwrap',
+                    'browserify2:test',
+                    'browserify2:examples_list'
+                ],
                 options: {
                     spawn: false
                 },
-            },
+            }
         },
 
         browserify2: {
@@ -34,6 +38,10 @@ module.exports = function(grunt) {
             build: {
                 entry: './global',
                 compile: './build/dominate.js'
+            },
+            examples_list: {
+                entry: './examples/list/app',
+                compile: './examples/list/build/app.js'
             }
         },
 
@@ -55,7 +63,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify2');
 
     // Default task(s).
-    grunt.registerTask('default', ['amdwrap', 'browserify2:test', 'watch']);
+    grunt.registerTask('default', [
+        'amdwrap',
+        'browserify2:test',
+        'browserify2:examples_list',
+        'watch']);
     grunt.registerTask('build', ['browserify2']);
 
 };
