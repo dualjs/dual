@@ -261,26 +261,26 @@ describe('Widget', function() {
 describe('List', function() {
     it('should allow add item', function() {
         var l = new List();
-        l.add('hello');
+        l.add({text:'hello'});
         l.stringify().should.equal('<ul name="root"><li>hello</li></ul>');
     });
 
     it('should allow remove item', function() {
         var l = new List();
-        l.add('hello');
+        l.add({text:'hello'});
         l.remove(0);
         l.stringify().should.equal('<ul name="root"></ul>');
     });
 
     it('should allow add item at specified position', function() {
         var l = new List();
-        l.add('hello');
-        l.add('world');
+        l.add({text:'hello'});
+        l.add({text:'world'});
         l.stringify().should.equal('<ul name="root">' +
             '<li>hello</li>' +
             '<li>world</li>' +
             '</ul>');
-        l.add('crazy', 1);
+        l.add({text:'crazy'}, 1);
         l.stringify().should.equal('<ul name="root">' +
             '<li>hello</li>' +
             '<li>crazy</li>' +
