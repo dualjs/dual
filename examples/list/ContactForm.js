@@ -37,15 +37,15 @@ var ContactForm = dominate.Widget.extend({
     },
 
     applyAttribute_first : function (value) {
-        this.assets.first.setAttribute('value', value);
+        this.assets.first.setValue(value);
     },
 
     applyAttribute_last : function (value) {
-        this.assets.last.setAttribute('value', value);
+        this.assets.last.setValue(value);
     },
 
     applyAttribute_email : function (value) {
-        this.assets.email.setAttribute('value', value);
+        this.assets.email.setValue(value);
     }
 });
 

@@ -1,34 +1,43 @@
 var ContactList = require('./ContactList');
 var ContactForm = require('./ContactForm');
+var backbone = require('backbone');
+var BackboneModelAdapter = require('../../lib/adapter/BackboneModel');
+var BackboneCollectionAdapter = require('../../lib/adapter/BackboneCollection');
 
 
 var list = new ContactList();
 var form = new ContactForm();
+var contacts = new backbone.Collection();
+var newContact = new backbone.Model();
+new BackboneCollectionAdapter(contacts, list);
+new BackboneModelAdapter(newContact, form);
 
 
-form.populate({
+newContact.set({
     first: 'a',
     last: 'b',
     email: 'a.b@example.com'
 });
 
-list.add({
+contacts.add({
     first: 'Hello',
     last: 'World',
     email: 'hello.world@example.com'
 });
 
-list.add({
+contacts.add({
     first: 'Foo',
     last: 'Bar',
     email: 'foo.bar@example.com'
 });
 
-list.add({
+contacts.add({
     first: 'Abc',
     last: 'Xyz',
     email: 'abc.xyz@example.com'
-}, 1);
+}, {
+    index: 1
+});
 
 document.getElementById('app')
     .appendChild(list.domify());
