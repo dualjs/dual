@@ -14,8 +14,19 @@ var ContactForm = dominate.Widget.extend({
         this.$ = fromJSON(['form', [
             ['p', [field('first', 'First Name')]],
             ['p', [field('last' , 'Last Name' )]],
-            ['p', [field('email', 'E-Mail'    )]]
+            ['p', [field('email', 'E-Mail'    )]],
+            ['p', [
+                ['button', {name:'saveButton'}, ['Save']]
+            ]]
         ]]);
+    },
+
+    bindEvents : function () {
+        this.assets.saveButton.listenTo('click');
+        this.assets.saveButton.on('dom.click', function (e) {
+            e.stop();
+            this.emit('save', this.serialize());
+        }.bind(this));
     },
 
     populate : function (data) {

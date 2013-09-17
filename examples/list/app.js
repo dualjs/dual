@@ -14,13 +14,32 @@ var newContact = new backbone.Model();
 new BackboneCollectionAdapter(contactsCollection, contactsListView);
 new BackboneModelAdapter(newContact, newContactFormView);
 
-contactsListView.on('select', function (data) {
+contactsListView.on('select', function(data) {
     var selectedModel = contactsCollection.get(data.id);
-    if(!selectedModel) {
+
+    if (!selectedModel) {
         return;
     }
 
     newContact.set(selectedModel.attributes);
+});
+
+newContactFormView.on('save', function(data) {
+    newContact.set(data);
+
+    // //for real life:
+    //newContact.save();
+
+    //for this demo:
+    if (!newContact.id) {
+        newContact.set('id', '' + Math.round(Math.random() * 1e6));
+    }
+    var modelInList = contactsCollection.get(newContact.id);
+    if (modelInList) {
+        modelInList.set(newContact.attributes);
+    } else {
+        contactsCollection.add(newContact.attributes);
+    }
 });
 
 newContact.set({
