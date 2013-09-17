@@ -5,13 +5,23 @@ var BackboneModelAdapter = require('../../lib/adapter/BackboneModel');
 var BackboneCollectionAdapter = require('../../lib/adapter/BackboneCollection');
 
 
-var list = new ContactList();
-var form = new ContactForm();
-var contacts = new backbone.Collection();
-var newContact = new backbone.Model();
-new BackboneCollectionAdapter(contacts, list);
-new BackboneModelAdapter(newContact, form);
+var contactsListView = new ContactList();
+var newContactFormView = new ContactForm();
 
+var contactsCollection = new backbone.Collection();
+var newContact = new backbone.Model();
+
+new BackboneCollectionAdapter(contactsCollection, contactsListView);
+new BackboneModelAdapter(newContact, newContactFormView);
+
+contactsListView.on('select', function (data) {
+    var selectedModel = contactsCollection.get(data.id);
+    if(!selectedModel) {
+        return;
+    }
+
+    newContact.set(selectedModel.attributes);
+});
 
 newContact.set({
     first: 'a',
@@ -19,19 +29,22 @@ newContact.set({
     email: 'a.b@example.com'
 });
 
-contacts.add({
+contactsCollection.add({
+    id: 100,
     first: 'Hello',
     last: 'World',
     email: 'hello.world@example.com'
 });
 
-contacts.add({
+contactsCollection.add({
+    id: 101,
     first: 'Foo',
     last: 'Bar',
     email: 'foo.bar@example.com'
 });
 
-contacts.add({
+contactsCollection.add({
+    id: 102,
     first: 'Abc',
     last: 'Xyz',
     email: 'abc.xyz@example.com'
@@ -40,7 +53,7 @@ contacts.add({
 });
 
 document.getElementById('app')
-    .appendChild(list.domify());
+    .appendChild(contactsListView.domify());
 
 document.getElementById('app')
-    .appendChild(form.domify());
+    .appendChild(newContactFormView.domify());

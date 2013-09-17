@@ -10,7 +10,11 @@ var ContactList = dominate.List.extend({
     },
 
     setupItem: function(data) {
-        return new ContactItem();
+        var contactItem = new ContactItem();
+        contactItem.on('click', function () {
+            this.emit('select', data);
+        }.bind(this));
+        return contactItem;
     }
 });
 
