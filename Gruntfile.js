@@ -41,7 +41,8 @@ module.exports = function(grunt) {
             },
             examples_list: {
                 entry: './examples/list/app',
-                compile: './examples/list/build/app.js'
+                compile: './examples/list/build/app.js',
+                debug: true
             }
         },
 

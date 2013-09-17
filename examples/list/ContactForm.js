@@ -5,7 +5,7 @@ function field (name, title) {
     return ['label', [
         '' + title,
         ['br'],
-        ['input', { name:name }]
+        ['field:text', { name:name }]
     ]];
 }
 
@@ -19,22 +19,16 @@ var ContactForm = dominate.Widget.extend({
     },
 
     populate : function (data) {
-        this.setAttribute('first', data.first);
-        this.setAttribute('last', data.last);
-        this.setAttribute('email', data.email);
+        this.assets.first.setValue(data.first);
+        this.assets.last.setValue(data.last);
+        this.assets.email.setValue(data.email);
     },
 
     serialize : function () {
-        //TODO: to be completely rewritten!
-        //A field must have interface for value accessors.
-        //Placed her just for example.
-        if(!this.isRenderedClientSide) {
-            return {};
-        }
         return {
-            first : this.assets.first.domify().value,
-            last  : this.assets.last.domify().value,
-            email : this.assets.email.domify().value
+            first : this.assets.first.getValue(),
+            last  : this.assets.last.getValue(),
+            email : this.assets.email.getValue()
         };
     },
 

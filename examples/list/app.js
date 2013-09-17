@@ -5,11 +5,6 @@ var ContactForm = require('./ContactForm');
 var list = new ContactList();
 var form = new ContactForm();
 
-document.getElementById('app')
-    .appendChild(list.domify());
-
-document.getElementById('app')
-    .appendChild(form.domify());
 
 form.populate({
     first: 'a',
@@ -34,3 +29,9 @@ list.add({
     last: 'Xyz',
     email: 'abc.xyz@example.com'
 }, 1);
+
+document.getElementById('app')
+    .appendChild(list.domify());
+
+document.getElementById('app')
+    .appendChild(form.domify());
