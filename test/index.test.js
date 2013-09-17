@@ -287,4 +287,13 @@ describe('List', function() {
             '<li>world</li>' +
             '</ul>');
     });
+
+    it('should allow clear', function() {
+        var l = new List();
+        l.add({text:'hello'});
+        l.add({text:'world'});
+        l.clear();
+        l.stringify().should.equal('<ul name="root"></ul>');
+    });
+
 });
