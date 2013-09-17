@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
         watch: {
             all: {
-                files: ["./lib/**.js", "test/*.js", "examples/list/**.js"],
+                files: ["./lib/**.js", "./lib/**/**.js", "test/*.js", "examples/list/**.js"],
                 tasks: [
                     'amdwrap',
                     'browserify2:test',
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 
         browserify2: {
             test: {
-                entry: './test/index.test',
+                entry: './test/tests',
                 compile: './build/test.js',
                 debug: true
             },
