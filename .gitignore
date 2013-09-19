@@ -3,3 +3,4 @@ amd
 build
 examples/express/node_modules
 examples/list/build
+examples/calc/build
