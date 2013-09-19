@@ -1,14 +1,13 @@
 var Widget = require('../lib/Widget');
-var Node = require('../lib/Node');
 var fromJSON = require('../lib/fromJSON');
 
 module.exports = Widget.extend({
     initStructure: function() {
-        this.$ = fromJSON(['div', {name:'root'}, [
+        this.$ = fromJSON(['div', {'ui:asset':'root'}, [
             ['table', [
                 ['tr', [
-                    ['td', {name:'leftCell'}, ['hello']],
-                    ['td', {name:'rightCell'}, ['world']]
+                    ['td', {'ui:asset':'leftCell'}, ['hello']],
+                    ['td', {'ui:asset':'rightCell'}, ['world']]
                 ]]
             ]]
         ]]);

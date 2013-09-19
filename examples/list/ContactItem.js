@@ -3,16 +3,16 @@ var fromJSON = dominate.fromJSON;
 
 var ContactItem = dominate.Widget.extend({
     initStructure: function() {
-        this.$ = fromJSON(['li', {name:'root'}, [
+        this.$ = fromJSON(['li', {'ui:asset':'root'}, [
             ['p', [
                 ['strong', [
-                    ['span', {name:'first'}],
+                    ['span', {'ui:asset':'first'}],
                     ' ',
-                    ['span', {name:'last'}]
+                    ['span', {'ui:asset':'last'}]
                 ]]
             ]],
             ['p', [
-                ['span', {name:'email'}]
+                ['span', {'ui:asset':'email'}]
             ]]
         ]]);
     },

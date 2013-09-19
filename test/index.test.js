@@ -214,10 +214,10 @@ describe('Widget', function() {
 
         w.domify().querySelectorAll('td').length.should.equal(2);
 
-        w.stringify().should.equal(['<div name="root">',
+        w.stringify().should.equal(['<div ui:asset="root">',
             '<table><tr>',
-            '<td name="leftCell">hello</td>',
-            '<td name="rightCell">world</td>',
+            '<td ui:asset="leftCell">hello</td>',
+            '<td ui:asset="rightCell">world</td>',
             '</tr></table></div>'
         ].join(''));
 
@@ -235,10 +235,10 @@ describe('Widget', function() {
 
         w.parent.should.equal(n);
 
-        n.stringify().should.equal(['<div><div name="root">',
+        n.stringify().should.equal(['<div><div ui:asset="root">',
             '<table><tr>',
-            '<td name="leftCell">hello</td>',
-            '<td name="rightCell">world</td>',
+            '<td ui:asset="leftCell">hello</td>',
+            '<td ui:asset="rightCell">world</td>',
             '</tr></table></div></div>'
         ].join(''));
     });
@@ -249,10 +249,10 @@ describe('Widget', function() {
         w.setAttribute('left', 'foo');
         w.setAttribute('right', 'bar');
 
-        w.stringify().should.equal(['<div name="root">',
+        w.stringify().should.equal(['<div ui:asset="root">',
             '<table><tr>',
-            '<td name="leftCell">foo</td>',
-            '<td name="rightCell">bar</td>',
+            '<td ui:asset="leftCell">foo</td>',
+            '<td ui:asset="rightCell">bar</td>',
             '</tr></table></div>'
         ].join(''));
     });
@@ -262,26 +262,26 @@ describe('List', function() {
     it('should allow add item', function() {
         var l = new List();
         l.add({text:'hello'});
-        l.stringify().should.equal('<ul name="root"><li>hello</li></ul>');
+        l.stringify().should.equal('<ul ui:asset="root"><li>hello</li></ul>');
     });
 
     it('should allow remove item', function() {
         var l = new List();
         l.add({text:'hello'});
         l.remove(0);
-        l.stringify().should.equal('<ul name="root"></ul>');
+        l.stringify().should.equal('<ul ui:asset="root"></ul>');
     });
 
     it('should allow add item at specified position', function() {
         var l = new List();
         l.add({text:'hello'});
         l.add({text:'world'});
-        l.stringify().should.equal('<ul name="root">' +
+        l.stringify().should.equal('<ul ui:asset="root">' +
             '<li>hello</li>' +
             '<li>world</li>' +
             '</ul>');
         l.add({text:'crazy'}, 1);
-        l.stringify().should.equal('<ul name="root">' +
+        l.stringify().should.equal('<ul ui:asset="root">' +
             '<li>hello</li>' +
             '<li>crazy</li>' +
             '<li>world</li>' +
@@ -293,7 +293,7 @@ describe('List', function() {
         l.add({text:'hello'});
         l.add({text:'world'});
         l.clear();
-        l.stringify().should.equal('<ul name="root"></ul>');
+        l.stringify().should.equal('<ul ui:asset="root"></ul>');
     });
 
 });

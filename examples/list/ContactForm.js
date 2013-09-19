@@ -5,7 +5,7 @@ function field (name, title) {
     return ['label', [
         '' + title,
         ['br'],
-        ['field:text', { name:name }]
+        ['field:text', { 'ui:asset':name }]
     ]];
 }
 
@@ -16,7 +16,7 @@ var ContactForm = dominate.Widget.extend({
             ['p', [field('last' , 'Last Name' )]],
             ['p', [field('email', 'E-Mail'    )]],
             ['p', [
-                ['button', {name:'saveButton'}, ['Save']]
+                ['button', {'ui:asset':'saveButton'}, ['Save']]
             ]]
         ]]);
     },

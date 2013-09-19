@@ -1,3 +1,5 @@
+var uglify = require('uglify-js');
+
 module.exports = function(grunt) {
 
     // Project configuration.
@@ -17,14 +19,16 @@ module.exports = function(grunt) {
 
         watch: {
             all: {
-                files: ["./lib/**.js", "./lib/**/**.js", "test/*.js", "examples/list/**.js"],
+                files: ["./lib/**.js", "./lib/**/**.js", "test/*.js", "examples/**/**.js"],
                 tasks: [
                     'amdwrap',
                     'browserify2:test',
-                    'browserify2:examples_list'
+                    'browserify2:examples_list',
+                    'browserify2:examples_calc'
                 ],
                 options: {
-                    spawn: false
+                    spawn: false,
+                    atBegin: true
                 },
             }
         },
@@ -43,6 +47,17 @@ module.exports = function(grunt) {
                 entry: './examples/list/app',
                 compile: './examples/list/build/app.js',
                 debug: true
+            },
+            examples_calc: {
+                entry: './examples/calc/client',
+                compile: './examples/calc/build/app.js',
+                debug: true
+                // afterHook: function(src) {
+                //     var result = uglify.minify(src, {
+                //         fromString: true
+                //     });
+                //     return result.code;
+                // }
             }
         },
 
@@ -65,10 +80,11 @@ module.exports = function(grunt) {
 
     // Default task(s).
     grunt.registerTask('default', [
-        'amdwrap',
-        'browserify2:test',
-        'browserify2:examples_list',
-        'watch']);
+        // 'amdwrap',
+        // 'browserify2:test',
+        // 'browserify2:examples_list',
+        'watch'
+    ]);
     grunt.registerTask('build', ['browserify2']);
 
 };

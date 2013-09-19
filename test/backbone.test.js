@@ -16,16 +16,16 @@ describe('BackboneModelAdapter', function() {
         m.set('left', 'foo');
         m.set('right', 'bar');
         w.stringify().should.equal(
-            '<div name="root"><table><tr>' +
-            '<td name="leftCell">foo</td>' +
-            '<td name="rightCell">bar</td>' +
+            '<div ui:asset="root"><table><tr>' +
+            '<td ui:asset="leftCell">foo</td>' +
+            '<td ui:asset="rightCell">bar</td>' +
             '</tr></table></div>');
 
         m.set('left', 'abc');
         w.stringify().should.equal(
-            '<div name="root"><table><tr>' +
-            '<td name="leftCell">abc</td>' +
-            '<td name="rightCell">bar</td>' +
+            '<div ui:asset="root"><table><tr>' +
+            '<td ui:asset="leftCell">abc</td>' +
+            '<td ui:asset="rightCell">bar</td>' +
             '</tr></table></div>');
 
         m.set({
@@ -33,9 +33,9 @@ describe('BackboneModelAdapter', function() {
             right: 'two'
         });
         w.stringify().should.equal(
-            '<div name="root"><table><tr>' +
-            '<td name="leftCell">one</td>' +
-            '<td name="rightCell">two</td>' +
+            '<div ui:asset="root"><table><tr>' +
+            '<td ui:asset="leftCell">one</td>' +
+            '<td ui:asset="rightCell">two</td>' +
             '</tr></table></div>');
     });
 });
@@ -54,11 +54,11 @@ describe('BackboneCollectionAdapter', function() {
             last: 'Watson'
         });
 
-        l.stringify().should.equal('<ul name="root">' +
-            '<li><span name="first">Sherlock</span>' +
-            ' <span name="last">Holmes</span></li>' +
-            '<li><span name="first">John</span>' +
-            ' <span name="last">Watson</span></li></ul>');
+        l.stringify().should.equal('<ul ui:asset="root">' +
+            '<li><span ui:asset="first">Sherlock</span>' +
+            ' <span ui:asset="last">Holmes</span></li>' +
+            '<li><span ui:asset="first">John</span>' +
+            ' <span ui:asset="last">Watson</span></li></ul>');
 
     });
 
@@ -76,9 +76,9 @@ describe('BackboneCollectionAdapter', function() {
         });
 
         c.remove(c.at(1));
-        l.stringify().should.equal('<ul name="root">' +
-            '<li><span name="first">Sherlock</span>' +
-            ' <span name="last">Holmes</span></li>' +
+        l.stringify().should.equal('<ul ui:asset="root">' +
+            '<li><span ui:asset="first">Sherlock</span>' +
+            ' <span ui:asset="last">Holmes</span></li>' +
             '</ul>');
     });
 
@@ -103,11 +103,11 @@ describe('BackboneCollectionAdapter', function() {
             last: 'Ono'
         }]);
 
-        l.stringify().should.equal('<ul name="root">' +
-            '<li><span name="first">John</span>' +
-            ' <span name="last">Lennon</span></li>' +
-            '<li><span name="first">Yoko</span>' +
-            ' <span name="last">Ono</span></li></ul>');
+        l.stringify().should.equal('<ul ui:asset="root">' +
+            '<li><span ui:asset="first">John</span>' +
+            ' <span ui:asset="last">Lennon</span></li>' +
+            '<li><span ui:asset="first">Yoko</span>' +
+            ' <span ui:asset="last">Ono</span></li></ul>');
     });
 
     it('should change collection', function() {
@@ -129,15 +129,15 @@ describe('BackboneCollectionAdapter', function() {
 
         c.at(1).set('last', 'Hudson');
 
-        l.stringify().should.equal('<ul name="root">' +
-            '<li><span name="first">Sherlock</span>' +
-            ' <span name="last">Holmes</span></li>' +
+        l.stringify().should.equal('<ul ui:asset="root">' +
+            '<li><span ui:asset="first">Sherlock</span>' +
+            ' <span ui:asset="last">Holmes</span></li>' +
 
-            '<li><span name="first">Mrs.</span>' +
-            ' <span name="last">Hudson</span></li>' +
+            '<li><span ui:asset="first">Mrs.</span>' +
+            ' <span ui:asset="last">Hudson</span></li>' +
 
-            '<li><span name="first">John</span>' +
-            ' <span name="last">Watson</span></li></ul>');
+            '<li><span ui:asset="first">John</span>' +
+            ' <span ui:asset="last">Watson</span></li></ul>');
 
     });
 
@@ -166,15 +166,15 @@ describe('BackboneCollectionAdapter', function() {
         };
         c.sort();
 
-        l.stringify().should.equal('<ul name="root">' +
-            '<li><span name="first">Mrs.</span>' +
-            ' <span name="last">Hudson</span></li>' +
+        l.stringify().should.equal('<ul ui:asset="root">' +
+            '<li><span ui:asset="first">Mrs.</span>' +
+            ' <span ui:asset="last">Hudson</span></li>' +
 
-            '<li><span name="first">John</span>' +
-            ' <span name="last">Watson</span></li>' +
+            '<li><span ui:asset="first">John</span>' +
+            ' <span ui:asset="last">Watson</span></li>' +
 
-            '<li><span name="first">Sherlock</span>' +
-            ' <span name="last">Holmes</span></li></ul>');
+            '<li><span ui:asset="first">Sherlock</span>' +
+            ' <span ui:asset="last">Holmes</span></li></ul>');
 
 
     });

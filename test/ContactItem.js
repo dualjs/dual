@@ -4,9 +4,9 @@ var fromJSON = require('../lib/fromJSON');
 var ContactItem = Widget.extend({
     initStructure: function() {
         this.$ = fromJSON(['li', [
-            ['span', {name:'first'}],
+            ['span', {'ui:asset':'first'}],
             ' ',
-            ['span', {name:'last'}]
+            ['span', {'ui:asset':'last'}]
         ]]);
     },
 
