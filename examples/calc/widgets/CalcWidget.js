@@ -41,7 +41,7 @@ var CalcWidget = dominate.Widget.extend({
         ]);
     },
 
-    bindEvents: function() {
+    ready: function() {
         for (var i = 0; i <= 9; i++) {
             this.assets['n' + i].listenTo('click');
             this.assets['n' + i].on('dom.click', function(i) {
@@ -68,9 +68,11 @@ var CalcWidget = dominate.Widget.extend({
         this.assets.reset.on('dom.click', function () {
             this.emit('reset');
         }.bind(this));
+
+        this.__addNamesToAssets();
     },
 
-    ready: function () {
+    __addNamesToAssets: function () {
         //Server-side: give assets names in order to submit HTML-form
         var formAssets = ['n0', 'n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8', 'n9',
             'op_mul', 'op_div', 'op_add', 'op_sub',

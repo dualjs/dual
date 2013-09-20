@@ -21,7 +21,7 @@ var ContactForm = dominate.Widget.extend({
         ]]);
     },
 
-    bindEvents : function () {
+    ready : function () {
         this.assets.saveButton.listenTo('click');
         this.assets.saveButton.on('dom.click', function (e) {
             e.stop();

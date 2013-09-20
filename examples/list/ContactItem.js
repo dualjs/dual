@@ -17,7 +17,7 @@ var ContactItem = dominate.Widget.extend({
         ]]);
     },
 
-    bindEvents : function () {
+    ready : function () {
         this.assets.root.listenTo('click');
         this.assets.root.on('dom.click', function () {
             this.emit('click');
