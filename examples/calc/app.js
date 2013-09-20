@@ -22,7 +22,9 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/build' , express.static(path.join(__dirname, 'build' )));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());
@@ -65,6 +67,10 @@ app.post('/',
     },
     render
 );
+
+app.get('/client-side', function (req, res) {
+    res.sendfile(path.join(__dirname, 'index.html'));
+});
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));

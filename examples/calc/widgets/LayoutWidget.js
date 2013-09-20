@@ -8,7 +8,7 @@ var LayoutWidget = dominate.Widget.extend({
                 ['link', {
                     rel: 'stylesheet',
                     type: 'text/css',
-                    href: './style.css'
+                    href: './public/style.css'
                 }],
                 ['title', ['Server-side calculator example']],
                 ['body', [
