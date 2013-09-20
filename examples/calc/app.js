@@ -15,7 +15,7 @@ var LayoutWidget = require('./widgets/LayoutWidget');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.VCAP_APP_PORT || process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
