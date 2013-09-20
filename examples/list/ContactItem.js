@@ -1,7 +1,7 @@
-var dominate = require('../../dominate');
-var fromJSON = dominate.fromJSON;
+var dual = require('../../dual');
+var fromJSON = dual.fromJSON;
 
-var ContactItem = dominate.Widget.extend({
+var ContactItem = dual.Widget.extend({
     initStructure: function() {
         this.$ = fromJSON(['li', {'ui:asset':'root'}, [
             ['p', [

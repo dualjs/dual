@@ -1,11 +1,11 @@
-var dominate = require('../../dominate');
-var fromJSON = dominate.fromJSON;
+var dual = require('../../dual');
+var fromJSON = dual.fromJSON;
 var ContactItem = require('./ContactItem');
 
-var ContactList = dominate.List.extend({
+var ContactList = dual.List.extend({
 
     initStructure: function() {
-        dominate.List.prototype.initStructure.call(this);
+        dual.List.prototype.initStructure.call(this);
         this.$.setAttribute('class', 'contact-list');
     },
 

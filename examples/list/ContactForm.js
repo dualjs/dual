@@ -1,5 +1,5 @@
-var dominate = require('../../dominate');
-var fromJSON = dominate.fromJSON;
+var dual = require('../../dual');
+var fromJSON = dual.fromJSON;
 
 function field (name, title) {
     return ['label', [
@@ -9,7 +9,7 @@ function field (name, title) {
     ]];
 }
 
-var ContactForm = dominate.Widget.extend({
+var ContactForm = dual.Widget.extend({
     initStructure: function() {
         this.$ = fromJSON(['form', [
             ['p', [field('first', 'First Name')]],

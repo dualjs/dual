@@ -1,1 +1,1 @@
-window.Dominate = require('./dominate');
+window.dual = require('./dual');

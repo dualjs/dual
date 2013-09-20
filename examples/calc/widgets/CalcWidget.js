@@ -1,7 +1,7 @@
-var dominate = require('../../../dominate');
-var fromJSON = dominate.fromJSON;
+var dual = require('../../../dual');
+var fromJSON = dual.fromJSON;
 
-var CalcWidget = dominate.Widget.extend({
+var CalcWidget = dual.Widget.extend({
     initStructure: function() {
         this.$ = fromJSON([
             'div', {class:'calc'}, [

@@ -1,8 +1,8 @@
 {
-  "name": "dominate",
+  "name": "dual",
   "version": "0.0.1",
   "description": "",
-  "main": "dominate.js",
+  "main": "dual.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

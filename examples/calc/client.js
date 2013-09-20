@@ -1,4 +1,4 @@
-var dominate = require('../../dominate');
+var dual = require('../../dual');
 var Calc = require('./Calc');
 var CalcWidget = require('./widgets/CalcWidget');
 var calcController = require('./calcController');

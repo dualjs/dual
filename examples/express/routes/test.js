@@ -1,4 +1,4 @@
-var dominate = require('../../../dominate');
+var dual = require('../../../dual');
 var Widget = require('../widget');
 var layout = require('./layout');
 

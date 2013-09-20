@@ -9,7 +9,7 @@ module.exports = function(grunt) {
             all: {
                 expand: true,
                 cwd: "./",
-                src: ["dominate.js",
+                src: ["dual.js",
                     "lib/**.js",
                     "lib/Node/**.js"
                 ],
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
             },
             build: {
                 entry: './global',
-                compile: './build/dominate.js'
+                compile: './build/dual.js'
             },
             examples_list: {
                 entry: './examples/list/app',
