@@ -31,4 +31,16 @@ describe('Node#applyAttributeNs', function() {
         });
     });
 
+    describe('Node#hasClass/toggleClass', function() {
+        it('should work', function() {
+            var n = new D.Node();
+            n.toggleClass('foo');
+            n.hasClass('foo').should.equal(true);
+            n.toggleClass('foo');
+            n.toggleClass('bar');
+
+            n.getAttribute('class').should.equal('bar');
+        });
+    });
+
 });
