@@ -25,8 +25,16 @@ describe('Node/Text', function() {
         n.stringify().should.equal('hello world');
         n.domify().should.be.an.instanceof(window.Text);
     });
-});
 
+    it('should allow non-string value types', function() {
+        var n = fromJSON('hello world');
+        n.setContent(1984);
+        (function() {
+            n.stringify();
+        }).should.not['throw']();
+        n.stringify().should.equal('1984');
+    });
+});
 describe('Node', function() {
     var n = new Node();
 
