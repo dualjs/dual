@@ -15,6 +15,9 @@ describe('Node#applyAttributeNs', function() {
             n.setAttribute('class:bar', false);
 
             n.getAttribute('class').should.equal('foo baz');
+
+            n.stringify().should.equal('<div class="foo baz"></div>');
+            n.domify().outerHTML.should.equal('<div class="foo baz"></div>');
         });
     });
 
