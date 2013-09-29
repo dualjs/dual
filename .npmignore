@@ -1,0 +1,6 @@
+examples
+docs
+amd
+*.sublime-*
+build
+test
