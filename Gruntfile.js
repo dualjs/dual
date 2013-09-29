@@ -48,6 +48,11 @@ module.exports = function(grunt) {
                 compile: './examples/list/build/app.js',
                 debug: true
             },
+            examples_list: {
+                entry: './examples/checkbox/app',
+                compile: './examples/checkbox/build/app.js',
+                debug: true
+            },
             examples_calc: {
                 entry: './examples/calc/client',
                 compile: './examples/calc/build/app.js',
