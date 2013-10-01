@@ -17,9 +17,9 @@ With Dual you can use your single widgets codebase **both on client and on serve
 
  * really fast headless testing
  * progressive enhancement
- * speeding up application UX loading
+ * speeding up application UI loading
  * building pluggable server-side templates
- * building normal single-page applications
+ * building normal single-page applications (the way it is made with ExtJS or YUI, etc...)
 
 What Dual is not:
 
