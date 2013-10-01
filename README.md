@@ -13,7 +13,7 @@ Features:
  * automatic building with `grunt-dcl` TODO
  * project scaffolding with `grunt-init-dual` TODO
 
-With Dual you can use your single widgets codebase both on client and server. It is ideal for:
+With Dual you can use your single widgets codebase **both on client and on server**. It is ideal for:
 
  * really fast headless testing
  * progressive enhancement
