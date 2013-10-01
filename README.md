@@ -25,3 +25,16 @@ What Dual is not:
 
  * Dual is not a framework for writting the whole application that works both on client and server side. You have to write your models, communication and logic yourself.
  * Dual is not a widgets collection itself - it is rather a platform to organize your views code into widgets. However, there is DCL - a set of widgets made with dual.
+
+Installation
+------------
+
+Dual is hosted as npm-package.
+
+    npm install dual
+
+Usage
+-----
+
+    var D = require('dual');
+    //TODO
