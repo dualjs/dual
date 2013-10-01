@@ -1,4 +1,4 @@
-dual
+Dual
 ====
 
 DOM framework for Node and browser
