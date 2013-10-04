@@ -1,3 +1,4 @@
+require('./object.test');
 require('./properties.test');
 require('./aliases.test');
 require('./applyAttributeNs.test');

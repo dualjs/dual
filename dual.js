@@ -1,4 +1,5 @@
 module.exports = {
+    Object: require('./lib/Object'),
     Node: require('./lib/Node'),
     Widget: require('./lib/Widget'),
     List: require('./lib/List'),
