@@ -95,4 +95,39 @@ describe('Object', function() {
         t.getAttribute('foo').should.equal(500);
         t.getAttribute('bar').should.be.an.instanceOf(Date);
     });
+
+    it('should create getters and setters', function() {
+        var T = D.Object.extend({
+            ATTRS : {
+                foo : {}
+            }
+        });
+
+        var t = new T();
+        t.should.have.property('setFoo');
+        t.should.have.property('getFoo');
+        t.setFoo(123);
+        t.getFoo().should.equal(123);
+        t.getAttribute('foo').should.equal(123);
+    });
+
+    it('should skip accessors creation if the ones exist', function() {
+        var existingGetter = function () {};
+        var existingSetter = function () {};
+
+        var T = D.Object.extend({
+            ATTRS : {
+                foo : {}
+            },
+
+            setFoo : existingSetter,
+            getFoo : existingGetter
+        });
+
+        var t = new T();
+
+        t.getFoo.should.equal(existingGetter);
+        t.setFoo.should.equal(existingSetter);
+    });
+
 });
