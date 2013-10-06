@@ -1,3 +1,4 @@
+require('./destroy.test');
 require('./object.test');
 require('./properties.test');
 require('./aliases.test');
