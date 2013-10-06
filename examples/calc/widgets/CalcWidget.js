@@ -6,7 +6,7 @@ var CalcWidget = dual.Widget.extend({
         this.$ = fromJSON([
             'div', {class:'calc'}, [
                 ['div', [
-                    ['field:text', {'ui:asset':'screen', readonly:'true'}],
+                    ['input', {'ui:asset':'screen', type:'text', readonly:'true'}],
                     ['input', {'ui:asset':'dump', type:'hidden'}]
                 ]],
                 ['table', [
@@ -89,7 +89,7 @@ var CalcWidget = dual.Widget.extend({
     },
 
     applyAttribute_screen: function(value) {
-        this.assets.screen.setValue(value);
+        this.assets.screen.setProperty('value', value);
     },
 
     applyAttribute_dump: function(value) {
