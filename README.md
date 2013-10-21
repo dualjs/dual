@@ -9,8 +9,8 @@ Features:
  * incapsulation with `dual.Widget`
  * list management with `dual.List`
  * Backbone integration with `dual.adapter.BackboneModel` and `dual.adapter.BackboneCollection`
- * DCL - Dual Components Library (Twitter Bootstrap powered set of useful widgets) TODO
- * automatic building with `grunt-dcl` TODO
+ * DCL - Dual Components Library (Twitter Bootstrap powered set of useful widgets) - work in progress
+ * automatic resource building with [`grunt-dcl-resources`](https://github.com/dualjs/grunt-dcl-resources)
  * project scaffolding with `grunt-init-dual` TODO
 
 With Dual you can use your single widgets codebase **both on client and on server**. It is ideal for:
