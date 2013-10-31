@@ -1,3 +1,4 @@
+require('./easyAttrs.test');
 require('./destroy.test');
 require('./object.test');
 require('./properties.test');
