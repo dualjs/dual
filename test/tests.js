@@ -1,3 +1,4 @@
+require('./container.test');
 require('./easyAttrs.test');
 require('./destroy.test');
 require('./object.test');
